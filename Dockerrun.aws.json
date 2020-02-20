@@ -26,6 +26,7 @@
             ],
             "essential": true,
             "name": "app",
+            "memory": 256,
             "image":"svrsunil/app",
             "links": [
                 "mysqldb"
@@ -66,6 +67,7 @@
             ],
             "essential": true,
             "name": "mysqldb",
+            "memory": 512,
             "image": "svrsunil/mysql",
             "portMappings": [
                 {
