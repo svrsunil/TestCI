@@ -14,7 +14,7 @@ import (
 var router *httprouter.Router
 
 func TestAuth(t *testing.T) {
-	//initDB()
+	initDB()
 	req, _ := http.NewRequest("GET", "/api/getuser/test1@gmail.com", nil)
 	req.SetBasicAuth("abc", "123")
 

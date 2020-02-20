@@ -29,19 +29,23 @@ func getUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 
 	message := "User not Found"
 
-	var username string
+	username := ""
 
 	if email == "test1@gmail.com" {
 		username = "Sunil"
 	}
-	// err = db.QueryRow("SELECT name FROM POCDB.USER_TABLE WHERE email=?", email).Scan(&username)
 
-	// if err != nil {
-	// 	log.Println("Error in SQL:", err.Error())
-	// }
+	fmt.Println(db)
+	err = db.QueryRow("SELECT name FROM POCDB.USER_TABLE WHERE email=?", email).Scan(&username)
+
+	if err != nil {
+		log.Println("Error in SQL:", err.Error())
+	}
+
+	//log.Println(db.)
 
 	if len(username) > 0 {
-		message = "User Found"
+		message = "Welcome " + username + " !"
 	}
 	var byteArr []byte
 
