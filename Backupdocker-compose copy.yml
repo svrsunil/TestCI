@@ -1,0 +1,36 @@
+version: '3.7'
+
+services: 
+    mysqldb:
+        build: 
+            context: ./mysql_config
+        command: 
+            --explicit_defaults_for_timestamp
+            --default-authentication-plugin=mysql_native_password
+        environment: 
+            TZ: Asia/Singapore
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        healthcheck:
+            test: mysql --user=$$MYSQL_USER --password=$$MYSQL_PASSWORD -e 'SHOW DATABASES;'
+            timeout: 5s
+            retries: 5
+        ports: 
+            - "3306:3306"
+        tty: true
+        container_name: POC_MYSQL
+    app:
+        build: .
+        container_name: POC_APP
+        ports: 
+            - "8080:8080"
+        environment: 
+            WAIT_HOSTS: mysqldb:3306
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            TZ: Asia/Singapore
+        depends_on: 
+            - mysqldb

@@ -1,0 +1,79 @@
+{
+    "containerDefinitions": [
+        {
+            "environment": [
+                {
+                    "name": "WAIT_HOSTS",
+                    "value": "mysqldb:3306"
+                },
+                {
+                    "name": "MYSQL_DATABASE",
+                    "value": "POCDB"
+                },
+                {
+                    "name": "MYSQL_USER",
+                    "value": "docker"
+                },
+                {
+                    "name": "MYSQL_PASSWORD",
+                    "value": "docker"
+                },
+                {
+                    "name": "TZ",
+                    "value": "Asia/Singapore"
+                }
+            ],
+            "essential": true,
+            "name": "app",
+            "image":"",
+            "links": [
+                "mysqldb"
+            ],
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 8080
+                }
+            ]
+        },
+        {
+            "command": [
+                "--explicit_defaults_for_timestamp",
+                "--default-authentication-plugin=mysql_native_password"
+            ],
+            "environment": [
+                {
+                    "name": "TZ",
+                    "value": "Asia/Singapore"
+                },
+                {
+                    "name": "MYSQL_ROOT_PASSWORD",
+                    "value": "root"
+                },
+                {
+                    "name": "MYSQL_DATABASE",
+                    "value": "POCDB"
+                },
+                {
+                    "name": "MYSQL_USER",
+                    "value": "docker"
+                },
+                {
+                    "name": "MYSQL_PASSWORD",
+                    "value": "docker"
+                }
+            ],
+            "essential": true,
+            "name": "mysqldb",
+            "image": "mysql",
+            "portMappings": [
+                {
+                    "containerPort": 3306,
+                    "hostPort": 3306
+                }
+            ]
+        }
+    ],
+    "family": "",
+    "volumes": []
+}
