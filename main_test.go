@@ -26,7 +26,7 @@ func TestAuth(t *testing.T) {
 
 	res := response{}
 	json.Unmarshal([]byte(responseRecorder.Body.String()), &res)
-	t.Log(res.Statuscode)
+	//t.Log(res.Statuscode)
 	assert.Equal(t, "200", res.Statuscode)
 
 }

@@ -79,3 +79,5 @@ func setupRoutes() *httprouter.Router {
 
 	return router
 }
+
+// #http://deployci-env.5mj32iv4cz.ap-southeast-1.elasticbeanstalk.com:8080/api/getuser/test1@gmail.com
