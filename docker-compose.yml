@@ -25,7 +25,7 @@ services:
         build: .
         container_name: POC_APP
         ports: 
-            - "8080:8080"
+            - "80:8080"
         environment: 
             WAIT_HOSTS: mysqldb:3306
             MYSQL_DATABASE: ${MYSQL_DATABASE}

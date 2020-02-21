@@ -19,7 +19,7 @@ COPY . .
 RUN go build -o main .
 
 # Expose port 8080 to the outside world
-EXPOSE 8080
+EXPOSE 80
 
 ## THE LIFE SAVER
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait

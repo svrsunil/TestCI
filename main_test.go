@@ -16,7 +16,7 @@ var router *httprouter.Router
 func TestAuth(t *testing.T) {
 	initDB()
 	req, _ := http.NewRequest("GET", "/api/getuser/test1@gmail.com", nil)
-	req.SetBasicAuth("abc", "1234")
+	req.SetBasicAuth("abc", "123")
 
 	responseRecorder := httptest.NewRecorder()
 

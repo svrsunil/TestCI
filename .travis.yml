@@ -11,7 +11,7 @@ install:
 
 script:
     - docker build -t svrsunil/app .
-    - echo "tests pass !" # put your normal testing scripts here
+    #- echo "tests pass !" # put your normal testing scripts here
 
 after_success:
   - docker build -t svrsunil/mysql ./mysql_config
