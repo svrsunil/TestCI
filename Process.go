@@ -32,7 +32,7 @@ func getUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	username := ""
 
 	if email == "test1@gmail.com" {
-		username = "Sunil"
+		username = "Innov Lab"
 	}
 
 	fmt.Println(db)
@@ -45,7 +45,7 @@ func getUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	//log.Println(db.)
 
 	if len(username) > 0 {
-		message = "Welcome " + username + " !"
+		message = "Welcome to" + username + " !"
 	}
 	var byteArr []byte
 
