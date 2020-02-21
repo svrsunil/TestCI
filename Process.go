@@ -45,7 +45,7 @@ func getUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	//log.Println(db.)
 
 	if len(username) > 0 {
-		message = "Welcome to" + username + " !"
+		message = "Welcome to " + username + " !"
 	}
 	var byteArr []byte
 
