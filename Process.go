@@ -54,3 +54,27 @@ func getUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	w.Write(byteArr)
 
 }
+
+// Welcome :
+func Welcome(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+
+	w.Header().Set("Content-Type", "application/json")
+
+	defer func() { //catch or finally
+		if err := recover(); err != nil { //catch
+			msg := fmt.Errorf("%v", err).Error()
+			log.Println("Came here", msg)
+			log.Println(err)
+			byteArr, _ := json.Marshal(&response{Statuscode: "400", Errormsg: msg})
+			w.Write(byteArr)
+			w.WriteHeader(http.StatusBadRequest)
+		}
+	}()
+
+	var byteArr []byte
+
+	byteArr, _ = json.Marshal(&response{Statuscode: "200", Name: "", Msg: "Welcome Team."})
+
+	w.Write(byteArr)
+
+}

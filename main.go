@@ -77,6 +77,8 @@ func setupRoutes() *httprouter.Router {
 	router := httprouter.New()
 	router.GET("/api/getuser/:email", basicAuth(getUser))
 
+	router.GET("/api/welcome", Welcome)
+
 	return router
 }
 
